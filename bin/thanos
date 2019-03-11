@@ -1,0 +1,19 @@
+require 'infinity_stones'
+
+if ARGV[0] == '-h' or ARGV[0] == '--help'
+    puts "Deletes 50% of the files in the current directory (sub-directories included)."
+    puts "Usage: thanos snap --with-gauntlet"
+    puts ""
+    puts "--with-gauntlet \t Thanos wears the gauntlet before snapping."
+else
+    if ARGV[0] == 'snap'
+        if ARGV.include? '--with-gauntlet'
+            Infinity_Stones.snap
+        else
+            puts "Thanos is now snapping while he listens to Darude Sandstorm."
+        end
+    else
+        puts "thanos: missing operand"
+        puts "Try thanos --help for more information."
+    end
+end
