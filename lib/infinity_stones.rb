@@ -1,16 +1,23 @@
 #!/usr/bin/ruby -w
-# puts Dir["**/*"].length
-
 class Infinity_Stones
   def self.snap
-    dirs = Dir.glob("**/*")
+    # Find all the files and count them
     total = 0
+    dirs = Dir.glob("**/*")
     for i in 0..(dirs.size - 1)
-      next if File.directory?(dirs.at(i))
-      puts dirs.at(i)
+      filename = dirs.at(i)
+      next if File.directory?(filename) or filename.include? '.dust'
       total += 1
-      # puts File.directory?(dirs.at(i))
+
+      # Delete if the total is an odd number
+      if total % 2 != 0
+        File.write(filename, '')
+        File.rename(filename, filename + '.dust')
+        puts filename + " turns into dust..."
+      end
     end
-    puts "Found " + total + " files"
+    puts ""
+    puts (total / 2).to_s + " file(s) turned to dust."
+    puts "Perfectly Balanced. As all things should be."
   end
 end
