@@ -8,7 +8,6 @@ Gem::Specification.new do |s|
   s.authors     = ["Rosário Pereira Fernandes"]
   s.email       = 'rosariofernandes51@gmail.com'
   s.files       = ["lib/infinity_stones.rb"]
-  s.homepage    =
-    'https://rosariopfernandes.github.io/infinity_stones'
+  s.homepage    = 'https://github.com/rosariopfernandes/infinity_stones'
   s.license       = 'MIT'
 end
