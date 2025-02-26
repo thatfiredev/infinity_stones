@@ -2,13 +2,18 @@ require 'infinity_stones'
 
 if ARGV[0] == '-h' or ARGV[0] == '--help'
     puts "Deletes 50% of the files in the current directory (sub-directories included)."
-    puts "Usage: thanos snap --with-gauntlet"
+    puts "Usage: thanos snap [--percentage=25] [--with-gauntlet]"
     puts ""
     puts "--with-gauntlet \t Thanos wears the gauntlet before snapping."
+    puts "--percentage \t Percentage of files to delete. Default 50."
 else
     if ARGV[0] == 'snap'
+        percentage = 50
+        if ARGV.include? '--percentage'
+            percentage = ARGV.grep(/--percentage=(.*)/)[0].split('=')[1].to_i if ARGV.grep(/--percentage=(.*)/).any?
+        end
         if ARGV.include? '--with-gauntlet'
-            Infinity_Stones.snap
+            Infinity_Stones.snap(percentage)
         else
             puts "Thanos is now snapping while he listens to Darude Sandstorm."
         end
